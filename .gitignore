@@ -27,6 +27,10 @@ bld/
 .vs/
 .idea/
 
+# Config
+Client/Config/*
+!Client/Config/appsettings.example.json
+
 # .NET Core
 project.lock.json
 project.fragment.lock.json
