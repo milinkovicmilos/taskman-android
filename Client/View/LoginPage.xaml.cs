@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Client.ViewModel;
 
 namespace Client.View;
 
-public partial class HomePage : ContentPage
+public partial class LoginPage : ContentPage
 {
-    public HomePage(HomePageViewModel viewModel)
+    public LoginPage()
     {
         InitializeComponent();
-        BindingContext = viewModel;
     }
 }
