@@ -57,6 +57,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
@@ -68,6 +69,12 @@
     <ItemGroup>
         <EmbeddedResource Include="Config\appsettings.Development.json" />
         <EmbeddedResource Include="Config\appsettings.Production.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Model\" />
+      <Folder Include="Services\" />
+      <Folder Include="ViewModel\" />
     </ItemGroup>
 
 </Project>

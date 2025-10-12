@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Client.View;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
@@ -30,7 +31,7 @@ public static class MauiProgram
             builder.Configuration.AddConfiguration(configuration);
         }
 
-        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<HomePage>();
         return builder.Build();
     }
 }
