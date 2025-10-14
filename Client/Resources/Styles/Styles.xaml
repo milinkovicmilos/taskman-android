@@ -14,12 +14,37 @@
         <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
     </Style>
 
+    <Style TargetType="Label" x:Key="InputLabelStyle">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="ErrorLabelStyle">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+    </Style>
+
+    <Style TargetType="Button" x:Key="PrimaryButtonStyle">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="FontAttributes" Value="Bold"></Setter>
+        <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"></Setter>
+        <Setter Property="Padding" Value="5"></Setter>
+        <Setter Property="BorderColor" Value="{StaticResource BorderSecondaryColor}"></Setter>
+        <Setter Property="BorderWidth" Value="1"></Setter>
+    </Style>
+
     <Style TargetType="Button" x:Key="SecondaryButtonStyle">
         <Setter Property="FontSize" Value="16"></Setter>
         <Setter Property="BackgroundColor" Value="{StaticResource BorderColor}"></Setter>
         <Setter Property="Padding" Value="5"></Setter>
         <Setter Property="BorderColor" Value="{StaticResource BorderSecondaryColor}"></Setter>
         <Setter Property="BorderWidth" Value="1"></Setter>
+    </Style>
+
+    <Style TargetType="Entry" x:Key="InputControlStyle">
+        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"></Setter>
+        <Setter Property="PlaceholderColor" Value="{StaticResource SecondaryTextColor}"></Setter>
     </Style>
 
 </ResourceDictionary>
