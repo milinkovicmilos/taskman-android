@@ -27,6 +27,9 @@ bld/
 .vs/
 .idea/
 
+# User settings
+*.user
+
 # Config
 Client/Config/*
 !Client/Config/appsettings.example.json
