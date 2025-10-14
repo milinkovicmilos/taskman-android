@@ -23,12 +23,8 @@ public class AuthService
         _appState = appState;
     }
 
-    public async Task<MessageDataResponse<LoginResponseData?>> RegisterAsync(RegisterRequest request)
+    private async Task<MessageDataResponse<LoginResponseData?>> HandleResponse(HttpResponseMessage response)
     {
-        var json = JsonSerializer.Serialize(request, _options);
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-        var response = await _http.PostAsync("api/register", content);
         var jsonResponse = await response.Content.ReadAsStringAsync();
 
         var result = new MessageDataResponse<LoginResponseData?>();
@@ -57,38 +53,24 @@ public class AuthService
         return result;
     }
 
+    public async Task<MessageDataResponse<LoginResponseData?>> RegisterAsync(RegisterRequest request)
+    {
+        var json = JsonSerializer.Serialize(request, _options);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await _http.PostAsync("api/register", content);
+
+        return await HandleResponse(response);
+    }
+
     public async Task<MessageDataResponse<LoginResponseData?>> LoginAsync(LoginRequest request)
     {
         var json = JsonSerializer.Serialize(request, _options);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
         var response = await _http.PostAsync("/api/login", content);
-        var jsonResponse = await response.Content.ReadAsStringAsync();
 
-        var result = new MessageDataResponse<LoginResponseData?>();
-        if (response.IsSuccessStatusCode)
-        {
-            var responseObj =
-                JsonSerializer.Deserialize<MessageDataResponse<LoginResponseData>>(jsonResponse, _options);
-
-            result.Message = responseObj.Message;
-            result.Data = responseObj.Data;
-
-            _appState.IsLoggedIn = true;
-            _appState.UserFirstName = result.Data.FirstName;
-            _appState.UserLastName = result.Data.LastName;
-            _appState.UserEmail = result.Data.Email;
-            await SecureStorage.SetAsync("token", result.Data.Token);
-        }
-        else
-        {
-            var errorObj =
-                JsonSerializer.Deserialize<MessageResponse>(jsonResponse, _options);
-
-            result.Message = errorObj.Message;
-        }
-
-        return result;
+        return await HandleResponse(response);
     }
 
     public async Task<MessageDataResponse<User>?> FetchUserAsync()
