@@ -1,16 +1,46 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <Shell
     x:Class="Client.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:view="clr-namespace:Client.View"
+    xmlns:state="clr-namespace:Client.State"
     xmlns:local="clr-namespace:Client"
-    Shell.FlyoutBehavior="Disabled"
+    x:DataType="state:AppState"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.FlyoutBackgroundColor="{StaticResource CardBackgroundColor}"
+    Shell.BackgroundColor="{StaticResource CardBackgroundColor}"
     Title="Client">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate view:HomePage}"
-        Route="Home" />
+    <FlyoutItem Title="Home"
+                IsVisible="{Binding IsNotLoggedIn}"
+                Route="HomePage"
+                Shell.TitleColor="{StaticResource PrimaryTextColor}">
+        <ShellContent ContentTemplate="{DataTemplate view:HomePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Home"
+                IsVisible="{Binding IsLoggedIn}"
+                Route="LoggedInHomePage">
+        <ShellContent ContentTemplate="{DataTemplate view:LoggedInHomePage}" />
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout IsVisible="{Binding IsLoggedIn}"
+                             Margin="0,0,0,20">
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="{Binding FullName}"
+                       Margin="20,0,0,0"
+                       FontSize="16"
+                       TextColor="{StaticResource PrimaryTextColor}">
+                </Label>
+            </HorizontalStackLayout>
+            <Button Text="Logout"
+                    Command="{Binding LogoutCommand}"
+                    Margin="20"
+                    Style="{StaticResource PrimaryButtonStyle}" />
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
 
 </Shell>

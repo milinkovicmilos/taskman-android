@@ -14,13 +14,13 @@
             VerticalOptions="Center"
             HorizontalOptions="Center">
             <Label Text="Welcome to TaskMan"
-                   Style="{StaticResource TitleLabelStyle}"/>
+                   Style="{StaticResource TitleLabelStyle}" />
             <Button Text="Login"
                     Style="{StaticResource SecondaryButtonStyle}"
-                    Command="{Binding GoToLoginCommand}"/>
+                    Command="{Binding GoToLoginCommand}" />
             <Button Text="Register"
                     Style="{StaticResource SecondaryButtonStyle}"
-                    Command="{Binding GoToRegisterCommand}"/>
+                    Command="{Binding GoToRegisterCommand}" />
         </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>
