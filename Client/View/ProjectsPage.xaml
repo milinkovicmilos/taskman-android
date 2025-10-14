@@ -30,17 +30,13 @@
                     </CollectionView.GestureRecognizers>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:ProjectSummary">
-                            <Border Stroke="{StaticResource BorderColor}"
-                                    BackgroundColor="{StaticResource CardBackgroundColor}"
+                            <Border Style="{StaticResource CardStyle}"
                                     Margin="0,0,0,20">
-                                <Border.StrokeShape>
-                                    <Rectangle RadiusX="10"></Rectangle>
-                                </Border.StrokeShape>
                                 <VerticalStackLayout Padding="10">
                                     <Label Text="{Binding Name}"
-                                           Style="{StaticResource ProjectTitle}" />
+                                           Style="{StaticResource ProjectTitleStyle}" />
                                     <Label Text="{Binding Description}"
-                                           Style="{StaticResource ProjectDescription}" />
+                                           Style="{StaticResource ProjectDescriptionStyle}" />
                                 </VerticalStackLayout>
                             </Border>
                         </DataTemplate>
@@ -52,8 +48,7 @@
                     Margin="20,10,20,10"
                     Grid.Row="2"
                     Grid.ColumnSpan="2" />
-            <Border BackgroundColor="{StaticResource CardBackgroundColor}"
-                    Opacity="0.9"
+            <Border Style="{StaticResource LoadingStyle}"
                     IsVisible="{Binding IsBusy}"
                     Grid.ColumnSpan="2"
                     Grid.RowSpan="3">

@@ -25,37 +25,59 @@
         <Setter Property="LineBreakMode" Value="WordWrap" />
     </Style>
 
-    <Style TargetType="Label" x:Key="ProjectTitle">
+    <Style TargetType="Label" x:Key="ProjectTitleStyle">
         <Setter Property="FontSize" Value="14" />
         <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
     </Style>
 
-    <Style TargetType="Label" x:Key="ProjectDescription">
+    <Style TargetType="Label" x:Key="ProjectDescriptionStyle">
         <Setter Property="FontSize" Value="12" />
         <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}" />
     </Style>
 
     <Style TargetType="Button" x:Key="PrimaryButtonStyle">
-        <Setter Property="FontSize" Value="16"></Setter>
-        <Setter Property="FontAttributes" Value="Bold"></Setter>
-        <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"></Setter>
-        <Setter Property="Padding" Value="10"></Setter>
-        <Setter Property="BorderColor" Value="{StaticResource BorderSecondaryColor}"></Setter>
-        <Setter Property="BorderWidth" Value="1"></Setter>
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="BorderColor" Value="{StaticResource BorderSecondaryColor}" />
+        <Setter Property="BorderWidth" Value="1" />
     </Style>
 
     <Style TargetType="Button" x:Key="SecondaryButtonStyle">
-        <Setter Property="FontSize" Value="16"></Setter>
-        <Setter Property="BackgroundColor" Value="{StaticResource BorderColor}"></Setter>
-        <Setter Property="Padding" Value="5"></Setter>
-        <Setter Property="BorderColor" Value="{StaticResource BorderSecondaryColor}"></Setter>
-        <Setter Property="BorderWidth" Value="1"></Setter>
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="BackgroundColor" Value="{StaticResource BorderColor}" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="BorderColor" Value="{StaticResource BorderSecondaryColor}" />
+        <Setter Property="BorderWidth" Value="1" />
     </Style>
 
     <Style TargetType="Entry" x:Key="InputControlStyle">
-        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}"></Setter>
-        <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"></Setter>
-        <Setter Property="PlaceholderColor" Value="{StaticResource SecondaryTextColor}"></Setter>
+        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
+        <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource SecondaryTextColor}" />
+    </Style>
+
+    <Style TargetType="Border" x:Key="DefaultBorderStyle">
+        <Setter Property="Stroke" Value="{StaticResource BorderColor}" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeShape">
+            <Rectangle RadiusX="5" />
+        </Setter>
+    </Style>
+
+    <Style TargetType="Border" x:Key="CardStyle">
+        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
+        <Setter Property="Stroke" Value="{StaticResource BorderColor}" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeShape">
+            <Rectangle RadiusX="5" />
+        </Setter>
+    </Style>
+
+    <Style TargetType="Border" x:Key="LoadingStyle">
+        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
+        <Setter Property="Opacity" Value="0.9" />
     </Style>
 
 </ResourceDictionary>

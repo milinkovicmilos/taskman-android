@@ -14,7 +14,7 @@
             HorizontalOptions="Center">
             <VerticalStackLayout Spacing="5">
                 <Label Text="First Name:" Style="{StaticResource InputLabelStyle}"></Label>
-                <Border Stroke="{StaticResource BorderColor}" StrokeThickness="1">
+                <Border Style="{StaticResource DefaultBorderStyle}">
                     <Entry Placeholder="Enter First Name..."
                            Style="{StaticResource InputControlStyle}"
                            Text="{Binding FirstName}" />
@@ -22,7 +22,7 @@
             </VerticalStackLayout>
             <VerticalStackLayout Spacing="5">
                 <Label Text="Last Name:" Style="{StaticResource InputLabelStyle}"></Label>
-                <Border Stroke="{StaticResource BorderColor}" StrokeThickness="1">
+                <Border Style="{StaticResource DefaultBorderStyle}">
                     <Entry Placeholder="Enter Last Name..."
                            Style="{StaticResource InputControlStyle}"
                            Text="{Binding LastName}" />
@@ -30,7 +30,7 @@
             </VerticalStackLayout>
             <VerticalStackLayout Spacing="5">
                 <Label Text="Email:" Style="{StaticResource InputLabelStyle}"></Label>
-                <Border Stroke="{StaticResource BorderColor}" StrokeThickness="1">
+                <Border Style="{StaticResource DefaultBorderStyle}">
                     <Entry Placeholder="Enter Email..."
                            Style="{StaticResource InputControlStyle}"
                            Keyboard="Email"
@@ -39,7 +39,7 @@
             </VerticalStackLayout>
             <VerticalStackLayout Spacing="5" MinimumWidthRequest="250">
                 <Label Text="Password:" Style="{StaticResource InputLabelStyle}"></Label>
-                <Border Stroke="{StaticResource BorderColor}" StrokeThickness="1">
+                <Border Style="{StaticResource DefaultBorderStyle}">
                     <Entry Placeholder="Enter Password..."
                            Style="{StaticResource InputControlStyle}"
                            IsPassword="True"
@@ -48,7 +48,7 @@
             </VerticalStackLayout>
             <VerticalStackLayout Spacing="5" MinimumWidthRequest="250">
                 <Label Text="Confirm Password:" Style="{StaticResource InputLabelStyle}"></Label>
-                <Border Stroke="{StaticResource BorderColor}" StrokeThickness="1">
+                <Border Style="{StaticResource DefaultBorderStyle}">
                     <Entry Placeholder="Confirm Password..."
                            Style="{StaticResource InputControlStyle}"
                            IsPassword="True"
