@@ -28,6 +28,6 @@ public class ProjectsService
         if (result is null)
             throw new Exception("Failed to get projects");
 
-        return new PaginatedResponse<ProjectSummary>();
+        return result;
     }
 }
