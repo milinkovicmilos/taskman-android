@@ -14,6 +14,11 @@ public partial class LoggedInViewModel : BaseViewModel
     public LoggedInViewModel(AppState appState)
     {
         _appState = appState;
+        _appState.PropertyChanged += (_, e) =>
+        {
+            if (e.PropertyName == nameof(_appState.FullName))
+                OnPropertyChanged(nameof(FullName));
+        };
     }
 
     [RelayCommand]
