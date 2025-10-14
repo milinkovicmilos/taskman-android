@@ -22,7 +22,17 @@
     <Style TargetType="Label" x:Key="ErrorLabelStyle">
         <Setter Property="FontSize" Value="14" />
         <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
-        <Setter Property="LineBreakMode" Value="WordWrap"></Setter>
+        <Setter Property="LineBreakMode" Value="WordWrap" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="ProjectTitle">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="ProjectDescription">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}" />
     </Style>
 
     <Style TargetType="Button" x:Key="PrimaryButtonStyle">
