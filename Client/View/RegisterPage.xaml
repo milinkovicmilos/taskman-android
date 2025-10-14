@@ -2,9 +2,64 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Client.ViewModel"
              x:Class="Client.View.RegisterPage"
+             x:DataType="viewmodel:RegisterViewModel"
+             Title="{Binding Title}"
              BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Content>
-        <Label Text="Register:" Style="{StaticResource TitleLabelStyle}"></Label>
+        <VerticalStackLayout
+            Spacing="20"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+            <VerticalStackLayout Spacing="5">
+                <Label Text="First Name:" Style="{StaticResource InputLabelStyle}"></Label>
+                <Border Stroke="{StaticResource BorderColor}" StrokeThickness="1">
+                    <Entry Placeholder="Enter First Name..."
+                           Style="{StaticResource InputControlStyle}"
+                           Text="{Binding FirstName}" />
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Last Name:" Style="{StaticResource InputLabelStyle}"></Label>
+                <Border Stroke="{StaticResource BorderColor}" StrokeThickness="1">
+                    <Entry Placeholder="Enter Last Name..."
+                           Style="{StaticResource InputControlStyle}"
+                           Text="{Binding LastName}" />
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Email:" Style="{StaticResource InputLabelStyle}"></Label>
+                <Border Stroke="{StaticResource BorderColor}" StrokeThickness="1">
+                    <Entry Placeholder="Enter Email..."
+                           Style="{StaticResource InputControlStyle}"
+                           Keyboard="Email"
+                           Text="{Binding Email}" />
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout Spacing="5" MinimumWidthRequest="250">
+                <Label Text="Password:" Style="{StaticResource InputLabelStyle}"></Label>
+                <Border Stroke="{StaticResource BorderColor}" StrokeThickness="1">
+                    <Entry Placeholder="Enter Password..."
+                           Style="{StaticResource InputControlStyle}"
+                           IsPassword="True"
+                           Text="{Binding Password}" />
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout Spacing="5" MinimumWidthRequest="250">
+                <Label Text="Confirm Password:" Style="{StaticResource InputLabelStyle}"></Label>
+                <Border Stroke="{StaticResource BorderColor}" StrokeThickness="1">
+                    <Entry Placeholder="Confirm Password..."
+                           Style="{StaticResource InputControlStyle}"
+                           IsPassword="True"
+                           Text="{Binding PasswordConfirmation}" />
+                </Border>
+            </VerticalStackLayout>
+            <Label Text="{Binding ErrorMessage}"
+                   MaximumWidthRequest="300"
+                   Style="{StaticResource ErrorLabelStyle}" />
+            <Button Text="Register" Style="{StaticResource SecondaryButtonStyle}"
+                    Command="{Binding RegisterCommand}" />
+        </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>
