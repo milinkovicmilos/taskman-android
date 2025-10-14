@@ -9,9 +9,9 @@
     <ContentPage.Content>
         <ScrollView>
             <Grid ColumnDefinitions="*,*"
-                  RowDefinitions="*,Auto"
-                  Margin="20">
-                <VerticalStackLayout Grid.ColumnSpan="2"
+                  RowDefinitions="*,Auto">
+                <VerticalStackLayout Margin="20"
+                                     Grid.ColumnSpan="2"
                                      Grid.Row="0">
                     <Label Text="Welcome back,"
                            Style="{StaticResource TitleLabelStyle}" />
@@ -22,6 +22,7 @@
                         Command="{Binding GoToProjectsCommand}"
                         Grid.ColumnSpan="2"
                         Grid.Row="1"
+                        Margin="10"
                         Style="{StaticResource PrimaryButtonStyle}" />
             </Grid>
         </ScrollView>
