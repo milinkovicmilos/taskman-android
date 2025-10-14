@@ -7,9 +7,9 @@ using Client.ViewModel;
 
 namespace Client.View;
 
-public partial class LoggedInHomePage : ContentPage
+public partial class ProjectsPage : ContentPage
 {
-    public LoggedInHomePage(LoggedInViewModel viewModel)
+    public ProjectsPage(ProjectsViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;

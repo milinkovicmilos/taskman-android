@@ -38,8 +38,10 @@ public static class MauiProgram
         builder.Services.AddTransient<AuthService>();
 
         builder.Services.AddSingleton<HomePageViewModel>();
+        builder.Services.AddSingleton<LoggedInViewModel>();
         builder.Services.AddTransient<RegisterViewModel>();
         builder.Services.AddTransient<LoginViewModel>();
+        builder.Services.AddTransient<ProjectsViewModel>();
 
         builder.Services.AddSingleton<AppState>();
 
@@ -47,6 +49,7 @@ public static class MauiProgram
         builder.Services.AddTransient<LoggedInHomePage>();
         builder.Services.AddTransient<RegisterPage>();
         builder.Services.AddTransient<LoginPage>();
+        builder.Services.AddTransient<ProjectsPage>();
 
         return builder.Build();
     }
