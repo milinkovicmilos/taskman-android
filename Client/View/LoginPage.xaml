@@ -8,32 +8,38 @@
              Title="{Binding Title}"
              BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Content>
-        <VerticalStackLayout
-            Spacing="20"
-            VerticalOptions="Center"
-            HorizontalOptions="Center">
-            <VerticalStackLayout Spacing="5">
-                <Label Text="Email:" Style="{StaticResource InputLabelStyle}"></Label>
-                <Border Style="{StaticResource DefaultBorderStyle}">
-                    <Entry Placeholder="Enter Email..."
-                           Style="{StaticResource InputControlStyle}"
-                           Keyboard="Email"
-                           Text="{Binding Email}" />
-                </Border>
-            </VerticalStackLayout>
-            <VerticalStackLayout Spacing="5" MinimumWidthRequest="250">
-                <Label Text="Password:" Style="{StaticResource InputLabelStyle}"></Label>
-                <Border Style="{StaticResource DefaultBorderStyle}">
-                    <Entry Placeholder="Enter Password..."
-                           Style="{StaticResource InputControlStyle}"
-                           IsPassword="True"
-                           Text="{Binding Password}" />
-                </Border>
-            </VerticalStackLayout>
-            <Label Text="{Binding ErrorMessage}"
-                   Style="{StaticResource ErrorLabelStyle}" />
-            <Button Text="Login" Style="{StaticResource SecondaryButtonStyle}"
-                    Command="{Binding LoginCommand}" />
-        </VerticalStackLayout>
+        <ScrollView>
+            <Grid ColumnDefinitions="*"
+                  RowDefinitions="*">
+                <VerticalStackLayout
+                    Spacing="20"
+                    Margin="20"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Email:" Style="{StaticResource InputLabelStyle}"></Label>
+                        <Border Style="{StaticResource DefaultBorderStyle}">
+                            <Entry Placeholder="Enter Email..."
+                                   Style="{StaticResource InputControlStyle}"
+                                   Keyboard="Email"
+                                   Text="{Binding Email}" />
+                        </Border>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5" MinimumWidthRequest="250">
+                        <Label Text="Password:" Style="{StaticResource InputLabelStyle}"></Label>
+                        <Border Style="{StaticResource DefaultBorderStyle}">
+                            <Entry Placeholder="Enter Password..."
+                                   Style="{StaticResource InputControlStyle}"
+                                   IsPassword="True"
+                                   Text="{Binding Password}" />
+                        </Border>
+                    </VerticalStackLayout>
+                    <Label Text="{Binding ErrorMessage}"
+                           Style="{StaticResource ErrorLabelStyle}" />
+                    <Button Text="Login" Style="{StaticResource SecondaryButtonStyle}"
+                            Command="{Binding LoginCommand}" />
+                </VerticalStackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
