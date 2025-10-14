@@ -42,4 +42,24 @@ public partial class ProjectsViewModel : BaseViewModel
             IsBusy = false;
         }
     }
+
+    [RelayCommand]
+    private async Task LoadNextPage()
+    {
+        if (Page + 1 > LastPage)
+            return;
+
+        Page++;
+        await LoadProjects();
+    }
+
+    [RelayCommand]
+    private async Task LoadPreviousPage()
+    {
+        if (Page - 1 < 1)
+            return;
+
+        Page--;
+        await LoadProjects();
+    }
 }

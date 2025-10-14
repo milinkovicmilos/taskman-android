@@ -17,32 +17,39 @@
                    Margin="20,10,20,0"
                    Grid.Row="0"
                    Grid.ColumnSpan="2" />
-            <CollectionView ItemsSource="{Binding Projects}"
-                            IsVisible="{Binding IsNotBusy}"
-                            Margin="20, 0"
-                            Grid.Row="1"
-                            Grid.ColumnSpan="2">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:ProjectSummary">
-                        <Border Stroke="{StaticResource BorderColor}"
-                                BackgroundColor="{StaticResource CardBackgroundColor}"
-                                Margin="0,0,0,20">
-                            <Border.StrokeShape>
-                                <Rectangle RadiusX="10"></Rectangle>
-                            </Border.StrokeShape>
-                            <VerticalStackLayout Padding="10">
-                                <Label Text="{Binding Name}"
-                                       Style="{StaticResource ProjectTitle}" />
-                                <Label Text="{Binding Description}"
-                                       Style="{StaticResource ProjectDescription}" />
-                            </VerticalStackLayout>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <ScrollView IsVisible="{Binding IsNotBusy}"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="20, 0">
+                <CollectionView ItemsSource="{Binding Projects}">
+                    <CollectionView.GestureRecognizers>
+                        <SwipeGestureRecognizer Direction="Left"
+                                                Command="{Binding LoadNextPageCommand}" />
+                        <SwipeGestureRecognizer Direction="Right"
+                                                Command="{Binding LoadPreviousPageCommand}" />
+                    </CollectionView.GestureRecognizers>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:ProjectSummary">
+                            <Border Stroke="{StaticResource BorderColor}"
+                                    BackgroundColor="{StaticResource CardBackgroundColor}"
+                                    Margin="0,0,0,20">
+                                <Border.StrokeShape>
+                                    <Rectangle RadiusX="10"></Rectangle>
+                                </Border.StrokeShape>
+                                <VerticalStackLayout Padding="10">
+                                    <Label Text="{Binding Name}"
+                                           Style="{StaticResource ProjectTitle}" />
+                                    <Label Text="{Binding Description}"
+                                           Style="{StaticResource ProjectDescription}" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
             <Button Text="New Project"
                     Style="{StaticResource PrimaryButtonStyle}"
-                    Margin="10"
+                    Margin="20,10,20,10"
                     Grid.Row="2"
                     Grid.ColumnSpan="2" />
             <Border BackgroundColor="{StaticResource CardBackgroundColor}"
