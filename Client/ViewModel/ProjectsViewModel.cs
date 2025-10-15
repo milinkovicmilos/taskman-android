@@ -34,6 +34,13 @@ public partial class ProjectsViewModel : BaseViewModel
             Projects = new List<ProjectSummary>();
             var result = await _service.FetchProjects(Page);
             var projects = result.Data;
+            if (!projects.Any() && Page > 1)
+            {
+                Page--;
+                result = await _service.FetchProjects(Page);
+                projects = result.Data;
+            }
+
             foreach (var project in projects)
                 Projects.Add(project);
             LastPage = result.LastPage;
