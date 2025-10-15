@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:Client.Model"
              xmlns:viewmodel="clr-namespace:Client.ViewModel"
              x:DataType="viewmodel:ProjectsViewModel"
-             x:Class="Client.View.ProjectsPage"
+             x:Class="Client.View.Projects.ProjectsPage"
              Background="{StaticResource BackgroundColor}">
     <ContentPage.Content>
         <Grid ColumnDefinitions="*,*"

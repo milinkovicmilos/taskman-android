@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Client.ViewModel;
 
-namespace Client.View;
+namespace Client.View.Projects;
 
 public partial class ProjectsPage : ContentPage
 {
@@ -24,6 +19,6 @@ public partial class ProjectsPage : ContentPage
         base.OnAppearing();
 
         await Task.Delay(100);
-        _viewModel.LoadProjectsCommand.ExecuteAsync(null);
+        await _viewModel.LoadProjectsCommand.ExecuteAsync(null);
     }
 }
