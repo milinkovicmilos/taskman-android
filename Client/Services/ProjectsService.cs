@@ -58,6 +58,21 @@ public class ProjectsService
         return result;
     }
 
+    public async Task<MessageResponse> UpdateProject(int id, UpdateProjectRequest request)
+    {
+        var json = JsonSerializer.Serialize(request, _options);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await _http.PatchAsync($"api/projects/{id}", content);
+
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var result = JsonSerializer.Deserialize<MessageResponse>(jsonResponse, _options);
+        if (result is null)
+            throw new Exception("Failed to update project");
+
+        return result;
+    }
+
     public async Task<MessageResponse> RemoveProject(int id)
     {
         var response = await _http.DeleteAsync($"api/projects/{id}");
