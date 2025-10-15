@@ -11,27 +11,39 @@
         <Grid ColumnDefinitions="*,*"
               RowDefinitions="Auto,*,Auto"
               RowSpacing="10">
-            <Label Text="{Binding PageLabel}"
-                   TextColor="White"
-                   HorizontalTextAlignment="Center"
-                   Margin="20,10,20,0"
-                   Grid.Row="0"
-                   Grid.ColumnSpan="2" />
+            <Grid ColumnDefinitions="*,Auto,*"
+                  Margin="20,10,20,10"
+                  Grid.ColumnSpan="2">
+                <Button Text="&lt;"
+                        Command="{Binding LoadPreviousPageCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Grid.Column="0" />
+                <Label Text="{Binding PageLabel}"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       Margin="20,10,20,0"
+                       Grid.Column="1" />
+                <Button Text="&gt;"
+                        Command="{Binding LoadNextPageCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Grid.Column="2" />
+            </Grid>
             <ScrollView IsVisible="{Binding IsNotBusy}"
                         Grid.Row="1"
                         Grid.ColumnSpan="2"
-                        Margin="20, 0">
+                        Margin="20,0,20,0">
                 <CollectionView ItemsSource="{Binding Projects}">
-                    <CollectionView.GestureRecognizers>
-                        <SwipeGestureRecognizer Direction="Left"
-                                                Command="{Binding LoadNextPageCommand}" />
-                        <SwipeGestureRecognizer Direction="Right"
-                                                Command="{Binding LoadPreviousPageCommand}" />
-                    </CollectionView.GestureRecognizers>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:ProjectSummary">
                             <Border Style="{StaticResource CardStyle}"
                                     Margin="0,0,0,20">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding Id}"
+                                                          Command="{
+                                                          Binding Source={RelativeSource AncestorType={
+                                                          x:Type viewmodel:ProjectsViewModel}}, 
+                                                          Path=GoToDetailsCommand}" />
+                                </Border.GestureRecognizers>
                                 <VerticalStackLayout Padding="10">
                                     <Label Text="{Binding Name}"
                                            Style="{StaticResource ProjectTitleStyle}" />
