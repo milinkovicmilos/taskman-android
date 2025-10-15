@@ -38,4 +38,19 @@ public partial class ProjectDetailsViewModel : BaseViewModel
             IsBusy = false;
         }
     }
+
+    [RelayCommand]
+    private async Task DeleteProject()
+    {
+        IsBusy = true;
+        try
+        {
+            await _service.RemoveProject(Id);
+            await Shell.Current.GoToAsync("..");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
 }

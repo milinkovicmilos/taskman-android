@@ -8,9 +8,30 @@
              BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Content>
         <ScrollView>
-            <Grid>
-                <Label Text="{Binding Name}"
-                       Style="{StaticResource TitleLabelStyle}" />
+            <Grid ColumnDefinitions="*"
+                  RowDefinitions="Auto,*">
+                <Border Style="{StaticResource CardStyle}"
+                        Padding="20"
+                        Margin="20"
+                        Grid.Row="0">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Name}"
+                               Style="{StaticResource ProjectTitleStyle}"
+                               FontSize="20" />
+                        <Label Text="{Binding Description}"
+                               Style="{StaticResource ProjectDescriptionStyle}" />
+                        <FlexLayout JustifyContent="SpaceBetween"
+                                    Margin="0,20,0,0">
+                            <Button Text="Edit"
+                                    Style="{StaticResource SecondaryButtonStyle}"
+                                    FontSize="14" />
+                            <Button Text="Delete"
+                                    Command="{Binding DeleteProjectCommand}"
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    FontSize="14" />
+                        </FlexLayout>
+                    </VerticalStackLayout>
+                </Border>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

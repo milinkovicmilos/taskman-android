@@ -57,4 +57,16 @@ public class ProjectsService
 
         return result;
     }
+
+    public async Task<MessageResponse> RemoveProject(int id)
+    {
+        var response = await _http.DeleteAsync($"api/projects/{id}");
+
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var result = JsonSerializer.Deserialize<MessageResponse>(jsonResponse, _options);
+        if (result is null)
+            throw new Exception("Failed to remove project");
+
+        return result;
+    }
 }
