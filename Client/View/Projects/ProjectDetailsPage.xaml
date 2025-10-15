@@ -16,10 +16,10 @@
                     Grid.Row="0">
                 <VerticalStackLayout>
                     <Label Text="{Binding Name}"
-                           Style="{StaticResource ProjectTitleStyle}"
+                           Style="{StaticResource CardTitleStyle}"
                            FontSize="20" />
                     <Label Text="{Binding Description}"
-                           Style="{StaticResource ProjectDescriptionStyle}" />
+                           Style="{StaticResource CardDescriptionStyle}" />
                     <FlexLayout JustifyContent="SpaceBetween"
                                 Margin="0,20,0,0">
                         <Button Text="Edit"
@@ -70,9 +70,9 @@
                                     -->
                                 <VerticalStackLayout Padding="10">
                                     <Label Text="{Binding Title}"
-                                           Style="{StaticResource ProjectTitleStyle}" />
+                                           Style="{StaticResource CardTitleStyle}" />
                                     <Label Text="{Binding Description}"
-                                           Style="{StaticResource ProjectDescriptionStyle}" />
+                                           Style="{StaticResource CardDescriptionStyle}" />
                                 </VerticalStackLayout>
                             </Border>
                         </DataTemplate>

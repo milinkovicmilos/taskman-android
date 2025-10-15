@@ -46,9 +46,9 @@
                                 </Border.GestureRecognizers>
                                 <VerticalStackLayout Padding="10">
                                     <Label Text="{Binding Name}"
-                                           Style="{StaticResource ProjectTitleStyle}" />
+                                           Style="{StaticResource CardTitleStyle}" />
                                     <Label Text="{Binding Description}"
-                                           Style="{StaticResource ProjectDescriptionStyle}" />
+                                           Style="{StaticResource CardDescriptionStyle}" />
                                 </VerticalStackLayout>
                             </Border>
                         </DataTemplate>
