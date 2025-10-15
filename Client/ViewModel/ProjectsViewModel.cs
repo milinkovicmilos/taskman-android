@@ -1,5 +1,6 @@
 using Client.Model;
 using Client.Services;
+using Client.View;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -61,5 +62,11 @@ public partial class ProjectsViewModel : BaseViewModel
 
         Page--;
         await LoadProjects();
+    }
+
+    [RelayCommand]
+    private async Task GoToCreateProject()
+    {
+        await Shell.Current.GoToAsync(nameof(CreateProjectPage));
     }
 }

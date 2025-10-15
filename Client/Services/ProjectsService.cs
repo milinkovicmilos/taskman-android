@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.Json;
 using Client.Model;
 using Client.Model.Response;
@@ -28,6 +29,20 @@ public class ProjectsService
         if (result is null)
             throw new Exception("Failed to get projects");
 
+        return result;
+    }
+
+    public async Task<MessageDataResponse<CreateDataResponse?>> StoreProject(CreateProjectRequest request)
+    {
+        var json = JsonSerializer.Serialize(request, _options);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await _http.PostAsync("api/projects", content);
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var result = JsonSerializer.Deserialize<MessageDataResponse<CreateDataResponse?>>(jsonResponse, _options);
+
+        if (result is null)
+            throw new Exception("Failed to store project");
         return result;
     }
 }
