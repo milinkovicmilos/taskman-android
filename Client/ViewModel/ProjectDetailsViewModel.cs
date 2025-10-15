@@ -34,19 +34,22 @@ public partial class ProjectDetailsViewModel : BaseViewModel
 
     private async Task LoadProject()
     {
+        IsBusy = true;
         try
         {
             var result = await _service.FetchProjectDetails(Id);
             Name = result.Name;
             Description = result.Description;
         }
-        catch (Exception ex)
+        finally
         {
+            IsBusy = false;
         }
     }
 
     private async Task LoadProjectsTasks()
     {
+        IsBusy = true;
         try
         {
             Tasks = new List<TaskSummary>();
@@ -59,28 +62,21 @@ public partial class ProjectDetailsViewModel : BaseViewModel
                 tasks = result.Data;
             }
 
-            foreach (var project in tasks)
-                Tasks.Add(project);
+            foreach (var task in tasks)
+                Tasks.Add(task);
             LastPage = result.LastPage;
         }
-        catch (Exception ex)
+        finally
         {
+            IsBusy = false;
         }
     }
 
     [RelayCommand]
     private async Task LoadProjectDetails()
     {
-        IsBusy = true;
-        try
-        {
-            await LoadProject();
-            await LoadProjectsTasks();
-        }
-        finally
-        {
-            IsBusy = false;
-        }
+        await LoadProject();
+        await LoadProjectsTasks();
     }
 
 
