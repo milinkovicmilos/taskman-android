@@ -14,5 +14,28 @@ public class TaskSummary
     [JsonConverter(typeof(BooleanConverter))]
     public bool Completed { get; set; }
 
-    [JsonPropertyName("completed_at")] public DateTime? CompletedAt { get; set; }
+    [JsonConverter(typeof(DateTimeConverter))]
+    [JsonPropertyName("completed_at")]
+    public DateTime? CompletedAt { get; set; }
+
+    public string DateText
+    {
+        get
+        {
+            if (DueDate.HasValue && CompletedAt.HasValue)
+            {
+                return $"Task was completed on {CompletedAt.Value.ToShortDateString()}";
+            }
+            else if (DueDate.HasValue && !CompletedAt.HasValue)
+            {
+                return $"Task is due on {DueDate.Value.ToShortDateString()}";
+            }
+            else if (CompletedAt.HasValue)
+            {
+                return $"Task was completed on {CompletedAt.Value.ToShortDateString()}";
+            }
+
+            return "";
+        }
+    }
 }

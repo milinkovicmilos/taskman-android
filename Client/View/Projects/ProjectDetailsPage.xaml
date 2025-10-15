@@ -69,9 +69,20 @@
                                     </Border.GestureRecognizers>
                                     -->
                                 <VerticalStackLayout Padding="10">
-                                    <Label Text="{Binding Title}"
-                                           Style="{StaticResource CardTitleStyle}" />
+                                    <HorizontalStackLayout>
+                                        <CheckBox IsChecked="{Binding Completed}"
+                                                  IsEnabled="False"
+                                                  Margin="0"
+                                                  Color="{StaticResource BorderColor}">
+                                        </CheckBox>
+                                        <Label Text="{Binding Title}"
+                                               VerticalOptions="Center"
+                                               Style="{StaticResource CardTitleStyle}" />
+                                    </HorizontalStackLayout>
                                     <Label Text="{Binding Description}"
+                                           Style="{StaticResource CardDescriptionStyle}" />
+                                    <Label Text="{Binding DateText}"
+                                           Margin="0,10,0,0"
                                            Style="{StaticResource CardDescriptionStyle}" />
                                 </VerticalStackLayout>
                             </Border>
