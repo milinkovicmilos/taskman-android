@@ -12,7 +12,7 @@
               RowDefinitions="Auto,*,Auto"
               RowSpacing="10">
             <Grid ColumnDefinitions="*,Auto,*"
-                  Margin="20,10,20,10"
+                  Margin="20,20,20,10"
                   Grid.ColumnSpan="2">
                 <Button Text="&lt;"
                         Command="{Binding LoadPreviousPageCommand}"

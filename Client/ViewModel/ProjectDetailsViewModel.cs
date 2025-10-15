@@ -1,4 +1,5 @@
 using Client.Services;
+using Client.View.Projects;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -18,11 +19,6 @@ public partial class ProjectDetailsViewModel : BaseViewModel
         _service = service;
     }
 
-    partial void OnIdChanged(int value)
-    {
-        LoadProjectDetailsCommand.Execute(null);
-    }
-
     [RelayCommand]
     private async Task LoadProjectDetails()
     {
@@ -37,6 +33,12 @@ public partial class ProjectDetailsViewModel : BaseViewModel
         {
             IsBusy = false;
         }
+    }
+
+    [RelayCommand]
+    private async Task GoToEditPage()
+    {
+        await Shell.Current.GoToAsync($"{nameof(EditProjectPage)}?Id={Id}");
     }
 
     [RelayCommand]
