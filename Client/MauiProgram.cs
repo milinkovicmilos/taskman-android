@@ -2,6 +2,7 @@
 using Client.Services;
 using Client.State;
 using Client.View;
+using Client.View.Projects;
 using Client.ViewModel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;

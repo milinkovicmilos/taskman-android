@@ -1,6 +1,5 @@
 using Client.State;
-using Client.View;
-using CommunityToolkit.Mvvm.ComponentModel;
+using Client.View.Projects;
 using CommunityToolkit.Mvvm.Input;
 
 namespace Client.ViewModel;

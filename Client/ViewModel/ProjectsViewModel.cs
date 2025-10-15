@@ -1,6 +1,6 @@
 using Client.Model;
 using Client.Services;
-using Client.View;
+using Client.View.Projects;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 

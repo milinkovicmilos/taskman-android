@@ -1,5 +1,6 @@
 ﻿using Client.State;
 using Client.View;
+using Client.View.Projects;
 using AppState = Client.State.AppState;
 
 namespace Client;
