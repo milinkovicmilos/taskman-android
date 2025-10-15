@@ -69,4 +69,10 @@ public partial class ProjectsViewModel : BaseViewModel
     {
         await Shell.Current.GoToAsync(nameof(CreateProjectPage));
     }
+
+    [RelayCommand]
+    private async Task GoToDetails(int id)
+    {
+        await Shell.Current.GoToAsync($"{nameof(ProjectDetailsPage)}?Id={id}");
+    }
 }

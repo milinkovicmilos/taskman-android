@@ -44,6 +44,7 @@ public static class MauiProgram
         builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<ProjectsViewModel>();
         builder.Services.AddTransient<CreateProjectViewModel>();
+        builder.Services.AddTransient<ProjectDetailsViewModel>();
 
         builder.Services.AddSingleton<AppState>();
 
@@ -53,6 +54,7 @@ public static class MauiProgram
         builder.Services.AddTransient<LoginPage>();
         builder.Services.AddTransient<ProjectsPage>();
         builder.Services.AddTransient<CreateProjectPage>();
+        builder.Services.AddTransient<ProjectDetailsPage>();
 
         return builder.Build();
     }

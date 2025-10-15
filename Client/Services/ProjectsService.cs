@@ -45,4 +45,16 @@ public class ProjectsService
             throw new Exception("Failed to store project");
         return result;
     }
+
+    public async Task<ProjectDetails> FetchProjectDetails(int id)
+    {
+        var response = await _http.GetAsync($"api/projects/{id}");
+
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var result = JsonSerializer.Deserialize<ProjectDetails>(jsonResponse, _options);
+        if (result is null)
+            throw new Exception("Failed to get project details");
+
+        return result;
+    }
 }
