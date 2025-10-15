@@ -8,91 +8,89 @@
              x:DataType="viewmodel:ProjectDetailsViewModel"
              BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Content>
-        <ScrollView>
-            <Grid ColumnDefinitions="*"
-                  RowDefinitions="Auto,Auto,*,Auto">
-                <Border Style="{StaticResource CardStyle}"
-                        Padding="20"
-                        Margin="20"
-                        Grid.Row="0">
-                    <VerticalStackLayout>
-                        <Label Text="{Binding Name}"
-                               Style="{StaticResource ProjectTitleStyle}"
-                               FontSize="20" />
-                        <Label Text="{Binding Description}"
-                               Style="{StaticResource ProjectDescriptionStyle}" />
-                        <FlexLayout JustifyContent="SpaceBetween"
-                                    Margin="0,20,0,0">
-                            <Button Text="Edit"
-                                    Command="{Binding GoToEditPageCommand}"
-                                    Style="{StaticResource SecondaryButtonStyle}"
-                                    FontSize="14" />
-                            <Button Text="Delete"
-                                    Command="{Binding DeleteProjectCommand}"
-                                    Style="{StaticResource DeleteButtonStyle}"
-                                    FontSize="14" />
-                        </FlexLayout>
-                    </VerticalStackLayout>
-                </Border>
-                <Grid ColumnDefinitions="*,Auto,*"
-                      Margin="20,0,20,20"
-                      Grid.Row="1">
-                    <Button Text="&lt;"
-                            Command="{Binding LoadPreviousPageCommand}"
-                            Style="{StaticResource SecondaryButtonStyle}"
-                            Grid.Column="0" />
-                    <Label Text="{Binding PageLabel}"
-                           TextColor="White"
-                           VerticalOptions="Center"
-                           HorizontalTextAlignment="Center"
-                           Margin="20,0"
-                           Grid.Column="1" />
-                    <Button Text="&gt;"
-                            Command="{Binding LoadNextPageCommand}"
-                            Style="{StaticResource SecondaryButtonStyle}"
-                            Grid.Column="2" />
-                </Grid>
-                <ScrollView IsVisible="{Binding IsNotBusy}"
-                            Grid.Row="2"
-                            Margin="20,0,20,0">
-                    <CollectionView ItemsSource="{Binding Tasks}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="modeltasks:TaskSummary">
-                                <Border Style="{StaticResource CardStyle}"
-                                        Margin="0,0,0,20">
-                                    <!--
+        <Grid ColumnDefinitions="*"
+              RowDefinitions="Auto,Auto,*,Auto">
+            <Border Style="{StaticResource CardStyle}"
+                    Padding="20"
+                    Margin="20"
+                    Grid.Row="0">
+                <VerticalStackLayout>
+                    <Label Text="{Binding Name}"
+                           Style="{StaticResource ProjectTitleStyle}"
+                           FontSize="20" />
+                    <Label Text="{Binding Description}"
+                           Style="{StaticResource ProjectDescriptionStyle}" />
+                    <FlexLayout JustifyContent="SpaceBetween"
+                                Margin="0,20,0,0">
+                        <Button Text="Edit"
+                                Command="{Binding GoToEditPageCommand}"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                FontSize="14" />
+                        <Button Text="Delete"
+                                Command="{Binding DeleteProjectCommand}"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                FontSize="14" />
+                    </FlexLayout>
+                </VerticalStackLayout>
+            </Border>
+            <Grid ColumnDefinitions="*,Auto,*"
+                  Margin="20,0,20,20"
+                  Grid.Row="1">
+                <Button Text="&lt;"
+                        Command="{Binding LoadPreviousPageCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Grid.Column="0" />
+                <Label Text="{Binding PageLabel}"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       Margin="20,0"
+                       Grid.Column="1" />
+                <Button Text="&gt;"
+                        Command="{Binding LoadNextPageCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Grid.Column="2" />
+            </Grid>
+            <ScrollView IsVisible="{Binding IsNotBusy}"
+                        Grid.Row="2"
+                        Margin="20,0,20,0">
+                <CollectionView ItemsSource="{Binding Tasks}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="modeltasks:TaskSummary">
+                            <Border Style="{StaticResource CardStyle}"
+                                    Margin="0,0,0,20">
+                                <!--
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer CommandParameter="{Binding Id}"
                                                               Command="{
-                                                          Binding Source={RelativeSource AncestorType={
-                                                          x:Type viewmodel:ProjectsViewModel}}, 
-                                                          Path=GoToDetailsCommand}" />
+                                                              Binding Source={RelativeSource AncestorType={
+                                                              x:Type viewmodel:ProjectsViewModel}}, 
+                                                              Path=GoToDetailsCommand}" />
                                     </Border.GestureRecognizers>
                                     -->
-                                    <VerticalStackLayout Padding="10">
-                                        <Label Text="{Binding Title}"
-                                               Style="{StaticResource ProjectTitleStyle}" />
-                                        <Label Text="{Binding Description}"
-                                               Style="{StaticResource ProjectDescriptionStyle}" />
-                                    </VerticalStackLayout>
-                                </Border>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </ScrollView>
-                <Button Text="New Task"
-                        Style="{StaticResource PrimaryButtonStyle}"
-                        Margin="20,10,20,10"
-                        Grid.Row="3" />
-                <Border Style="{StaticResource LoadingStyle}"
-                        IsVisible="{Binding IsBusy}"
-                        Grid.ColumnSpan="1"
-                        Grid.RowSpan="2">
-                    <ActivityIndicator IsRunning="{Binding IsBusy}"
-                                       Color="{StaticResource AccentColor}"
-                                       Scale="0.5" />
-                </Border>
-            </Grid>
-        </ScrollView>
+                                <VerticalStackLayout Padding="10">
+                                    <Label Text="{Binding Title}"
+                                           Style="{StaticResource ProjectTitleStyle}" />
+                                    <Label Text="{Binding Description}"
+                                           Style="{StaticResource ProjectDescriptionStyle}" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+            <Button Text="New Task"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Margin="20,10,20,10"
+                    Grid.Row="3" />
+            <Border Style="{StaticResource LoadingStyle}"
+                    IsVisible="{Binding IsBusy}"
+                    Grid.ColumnSpan="1"
+                    Grid.RowSpan="2">
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   Color="{StaticResource AccentColor}"
+                                   Scale="0.5" />
+            </Border>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
