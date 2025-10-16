@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:taskmodels="clr-namespace:Client.Model.Tasks"
+             x:DataType="taskmodels:TaskDetails"
+             x:Class="Client.View.Tasks.TaskDetailsView"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Border Style="{StaticResource CardStyle}"
+            Padding="20">
+        <VerticalStackLayout>
+            <FlexLayout JustifyContent="SpaceBetween">
+                <HorizontalStackLayout>
+                    <CheckBox IsChecked="{Binding Completed}"
+                              IsEnabled="False"
+                              Color="{StaticResource AccentColor}">
+                    </CheckBox>
+                    <Label Text="{Binding Title}"
+                           Style="{StaticResource CardTitleStyle}"
+                           FontSize="20" />
+                </HorizontalStackLayout>
+                <Ellipse WidthRequest="25"
+                         HeightRequest="25"
+                         BackgroundColor="{StaticResource DeleteColor}"
+                         Opacity="{Binding PriorityOpacity}" />
+            </FlexLayout>
+            <Label Text="{Binding Description}"
+                   Style="{StaticResource CardDescriptionStyle}" />
+            <Label Text="{Binding DateText}"
+                   Margin="0,10,0,0"
+                   Style="{StaticResource CardDescriptionStyle}" />
+            <!--
+        <FlexLayout JustifyContent="SpaceBetween"
+                    Margin="0,20,0,0">
+            <Button Text="Edit"
+                    Command="{Binding GoToEditPageCommand}"
+                    Style="{StaticResource SecondaryButtonStyle}"
+                    FontSize="14" />
+            <Button Text="Delete"
+                    Command="{Binding DeleteProjectCommand}"
+                    Style="{StaticResource DeleteButtonStyle}"
+                    FontSize="14" />
+        </FlexLayout>
+        -->
+        </VerticalStackLayout>
+    </Border>
+</ContentView>
