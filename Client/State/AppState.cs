@@ -1,3 +1,4 @@
+using Client.Services;
 using Client.View;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -20,13 +21,4 @@ public partial class AppState : ObservableObject
     public string FullName => $"{UserFirstName} {UserLastName}";
 
     [ObservableProperty] private string userEmail = string.Empty;
-
-    [RelayCommand]
-    private async Task LogoutAsync()
-    {
-        SecureStorage.Remove("token");
-        IsLoggedIn = false;
-
-        await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
-    }
 }
