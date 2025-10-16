@@ -50,6 +50,7 @@ public static class MauiProgram
         builder.Services.AddTransient<CreateProjectViewModel>();
         builder.Services.AddTransient<EditProjectViewModel>();
         builder.Services.AddTransient<ProjectDetailsViewModel>();
+        builder.Services.AddTransient<TaskDetailsViewModel>();
         builder.Services.AddTransient<CreateTaskViewModel>();
 
         builder.Services.AddSingleton<AppState>();
@@ -64,6 +65,7 @@ public static class MauiProgram
         builder.Services.AddTransient<CreateProjectPage>();
         builder.Services.AddTransient<EditProjectPage>();
         builder.Services.AddTransient<ProjectDetailsPage>();
+        builder.Services.AddTransient<TaskDetailsPage>();
         builder.Services.AddTransient<CreateTaskPage>();
 
         return builder.Build();
