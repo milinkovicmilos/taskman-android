@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:Client.ViewModel"
              x:Class="Client.View.HomePage"
              x:DataType="viewmodel:HomePageViewModel"
-             Title="{Binding Title}"
+             Title="{Binding PageTitle}"
              BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Content>
         <VerticalStackLayout

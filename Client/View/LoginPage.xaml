@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:Client.ViewModel"
              x:Class="Client.View.LoginPage"
              x:DataType="viewmodel:LoginViewModel"
-             Title="{Binding Title}"
+             Title="{Binding PageTitle}"
              BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Content>
         <ScrollView>
