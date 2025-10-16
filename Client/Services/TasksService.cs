@@ -20,7 +20,7 @@ public class TasksService
         };
     }
 
-    public async Task<PaginatedResponse<TaskSummary>> FetchProjectsTasks(int projectId, int page = 1)
+    public async Task<PaginatedResponse<TaskSummary>> FetchProjectsTasksAsync(int projectId, int page = 1)
     {
         var response = await _http.GetAsync($"api/projects/{projectId}/tasks?page={page}");
 
@@ -51,7 +51,7 @@ public class TasksService
         return result;
     }
 
-    public async Task<TaskDetails> FetchTaskDetails(int projectId, int taskId)
+    public async Task<TaskDetails> FetchTaskDetailsAsync(int projectId, int taskId)
     {
         var response = await _http.GetAsync($"api/projects/{projectId}/tasks/{taskId}");
 
@@ -59,6 +59,30 @@ public class TasksService
         var result = JsonSerializer.Deserialize<TaskDetails>(jsonResponse, _options);
         if (result is null)
             throw new Exception("Failed to retrieve task details");
+
+        return result;
+    }
+
+    public async Task<MessageResponse> MarkTaskAsCompleteAsync(int projectId, int taskId)
+    {
+        var response = await _http.PostAsync($"api/projects/{projectId}/tasks/{taskId}/completed", null);
+
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var result = JsonSerializer.Deserialize<MessageResponse>(jsonResponse, _options);
+        if (result is null)
+            throw new Exception("Failed to mark task as complete");
+
+        return result;
+    }
+
+    public async Task<MessageResponse> MarkTaskAsIncompleteAsync(int projectId, int taskId)
+    {
+        var response = await _http.DeleteAsync($"api/projects/{projectId}/tasks/{taskId}/completed");
+
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var result = JsonSerializer.Deserialize<MessageResponse>(jsonResponse, _options);
+        if (result is null)
+            throw new Exception("Failed to mark task as incomplete");
 
         return result;
     }
