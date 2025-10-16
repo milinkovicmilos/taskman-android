@@ -1,7 +1,4 @@
-using Client.Services;
-using Client.View;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 
 namespace Client.State;
 

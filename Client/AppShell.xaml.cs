@@ -1,9 +1,7 @@
-﻿using Client.State;
-using Client.View;
+﻿using Client.View;
 using Client.View.Projects;
 using Client.View.Tasks;
 using Client.ViewModel;
-using AppState = Client.State.AppState;
 
 namespace Client;
 
