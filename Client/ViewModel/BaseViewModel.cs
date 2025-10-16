@@ -5,8 +5,8 @@ namespace Client.ViewModel;
 public partial class BaseViewModel : ObservableObject
 {
     [ObservableProperty] [NotifyPropertyChangedFor(nameof(IsNotBusy))]
-    private bool isBusy;
+    private bool _isBusy;
 
-    [ObservableProperty] private string title;
-    public bool IsNotBusy => !isBusy;
+    [ObservableProperty] private string _pageTitle;
+    public bool IsNotBusy => !IsBusy;
 }
