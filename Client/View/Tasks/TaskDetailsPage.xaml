@@ -13,6 +13,11 @@
             <local:TaskDetailsView BindingContext="{Binding Task}"
                                    Margin="20"
                                    Grid.Row="0" />
+            <Button Text="{Binding TaskCompletionButtonText}"
+                    Command="{Binding TaskCompletionButtonCommand}"
+                    Margin="20,10,20,10"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Grid.Row="3" />
             <Border Style="{StaticResource LoadingStyle}"
                     IsVisible="{Binding IsBusy}"
                     Grid.ColumnSpan="1"

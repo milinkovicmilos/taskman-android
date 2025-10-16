@@ -10,10 +10,22 @@ namespace Client.ViewModel.Tasks;
 [QueryProperty(nameof(TaskId), nameof(TaskId))]
 public partial class TaskDetailsViewModel : BaseViewModel
 {
-    [ObservableProperty] private TaskDetails _task;
+    [ObservableProperty] [NotifyPropertyChangedFor(nameof(TaskCompletionButtonText))]
+    private TaskDetails? _task;
 
     public int ProjectId { get; set; }
     public int TaskId { get; set; }
+
+    public string TaskCompletionButtonText
+    {
+        get
+        {
+            if (Task is null)
+                return string.Empty;
+
+            return Task.Completed ? "Mark as Incomplete" : "Mark as Complete";
+        }
+    }
 
     private readonly TasksService _tasksService;
 
@@ -29,12 +41,33 @@ public partial class TaskDetailsViewModel : BaseViewModel
         IsBusy = true;
         try
         {
-            var result = await _tasksService.FetchTaskDetails(ProjectId, TaskId);
+            var result = await _tasksService.FetchTaskDetailsAsync(ProjectId, TaskId);
 
             Task = result;
         }
         finally
         {
+            IsBusy = false;
+        }
+    }
+
+    [RelayCommand]
+    private async Task TaskCompletionButtonAsync()
+    {
+        if (Task is null)
+            return;
+
+        IsBusy = true;
+        try
+        {
+            if (Task.Completed)
+                await _tasksService.MarkTaskAsIncompleteAsync(ProjectId, TaskId);
+            else
+                await _tasksService.MarkTaskAsCompleteAsync(ProjectId, TaskId);
+        }
+        finally
+        {
+            await LoadTaskDetailsAsync();
             IsBusy = false;
         }
     }
