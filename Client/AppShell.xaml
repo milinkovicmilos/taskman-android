@@ -4,40 +4,39 @@
     x:Class="Client.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:Client.ViewModel"
     xmlns:view="clr-namespace:Client.View"
-    xmlns:state="clr-namespace:Client.State"
-    xmlns:local="clr-namespace:Client"
-    x:DataType="state:AppState"
+    x:DataType="viewmodel:ShellViewModel"
     Shell.FlyoutBehavior="Flyout"
     Shell.FlyoutBackgroundColor="{StaticResource CardBackgroundColor}"
     Shell.BackgroundColor="{StaticResource CardBackgroundColor}"
     Title="Client">
 
     <FlyoutItem Title="Home"
-                IsVisible="{Binding IsNotLoggedIn}"
+                IsVisible="{Binding AppState.IsNotLoggedIn}"
                 Route="HomePage"
                 Shell.TitleColor="{StaticResource PrimaryTextColor}">
         <ShellContent ContentTemplate="{DataTemplate view:HomePage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Home"
-                IsVisible="{Binding IsLoggedIn}"
+                IsVisible="{Binding AppState.IsLoggedIn}"
                 Route="LoggedInHomePage">
         <ShellContent ContentTemplate="{DataTemplate view:LoggedInHomePage}" />
     </FlyoutItem>
 
     <Shell.FlyoutFooter>
-        <VerticalStackLayout IsVisible="{Binding IsLoggedIn}"
+        <VerticalStackLayout IsVisible="{Binding AppState.IsLoggedIn}"
                              Margin="0,0,0,20">
             <HorizontalStackLayout Spacing="10">
-                <Label Text="{Binding FullName}"
+                <Label Text="{Binding AppState.FullName}"
                        Margin="20,0,0,0"
                        FontSize="16"
                        TextColor="{StaticResource PrimaryTextColor}">
                 </Label>
             </HorizontalStackLayout>
             <Button Text="Logout"
-                    Command="{Binding LogoutCommand}"
+                    Command="{Binding AppStateCommands.LogoutCommand}"
                     Margin="20"
                     Style="{StaticResource PrimaryButtonStyle}" />
         </VerticalStackLayout>

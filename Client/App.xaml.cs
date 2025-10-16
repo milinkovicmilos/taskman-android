@@ -1,23 +1,21 @@
 ﻿using Client.Services;
-using Client.State;
 using Client.View;
+using Client.ViewModel;
 
 namespace Client;
 
 public partial class App : Application
 {
-    private AppState _appState;
-    private AuthService _authService;
+    private readonly AuthService _authService;
+    private ShellViewModel _viewModel;
 
-    public App(AppState state, AuthService authService)
+    public App(ShellViewModel viewModel, AuthService authService)
     {
         InitializeComponent();
-
-        MainPage = new AppShell(state);
-
-        _appState = state;
+        _viewModel = viewModel;
         _authService = authService;
 
+        MainPage = new AppShell(viewModel);
         Task.Run(async () => await CheckLoginStatus());
     }
 
@@ -33,10 +31,10 @@ public partial class App : Application
             var result = await _authService.FetchUserAsync();
             if (result != null)
             {
-                _appState.IsLoggedIn = true;
-                _appState.UserFirstName = result.Data.FirstName;
-                _appState.UserLastName = result.Data.LastName;
-                _appState.UserEmail = result.Data.Email;
+                _viewModel.AppState.IsLoggedIn = true;
+                _viewModel.AppState.UserFirstName = result.Data.FirstName;
+                _viewModel.AppState.UserLastName = result.Data.LastName;
+                _viewModel.AppState.UserEmail = result.Data.Email;
             }
 
             await Shell.Current.GoToAsync($"//{nameof(LoggedInHomePage)}");

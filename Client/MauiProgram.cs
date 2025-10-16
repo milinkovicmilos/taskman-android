@@ -50,7 +50,9 @@ public static class MauiProgram
         builder.Services.AddTransient<ProjectDetailsViewModel>();
 
         builder.Services.AddSingleton<AppState>();
+        builder.Services.AddSingleton<AppStateCommands>();
 
+        builder.Services.AddSingleton<ShellViewModel>();
         builder.Services.AddSingleton<HomePage>();
         builder.Services.AddTransient<LoggedInHomePage>();
         builder.Services.AddTransient<RegisterPage>();

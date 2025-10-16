@@ -1,16 +1,17 @@
 ﻿using Client.State;
 using Client.View;
 using Client.View.Projects;
+using Client.ViewModel;
 using AppState = Client.State.AppState;
 
 namespace Client;
 
 public partial class AppShell : Shell
 {
-    public AppShell(AppState appState)
+    public AppShell(ShellViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = appState;
+        BindingContext = viewModel;
 
         Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
         Routing.RegisterRoute(nameof(LoggedInHomePage), typeof(LoggedInHomePage));
