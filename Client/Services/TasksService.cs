@@ -50,4 +50,16 @@ public class TasksService
 
         return result;
     }
+
+    public async Task<TaskDetails> FetchTaskDetails(int projectId, int taskId)
+    {
+        var response = await _http.GetAsync($"api/projects/{projectId}/tasks/{taskId}");
+
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var result = JsonSerializer.Deserialize<TaskDetails>(jsonResponse, _options);
+        if (result is null)
+            throw new Exception("Failed to retrieve task details");
+
+        return result;
+    }
 }
