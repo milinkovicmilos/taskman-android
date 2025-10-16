@@ -55,12 +55,12 @@ public partial class ProjectDetailsViewModel : BaseViewModel
         try
         {
             Tasks = new List<TaskSummary>();
-            var result = await _tasksService.FetchProjectsTasks(Id, Page);
+            var result = await _tasksService.FetchProjectsTasksAsync(Id, Page);
             var tasks = result.Data;
             if (!tasks.Any() && Page > 1)
             {
                 Page--;
-                result = await _tasksService.FetchProjectsTasks(Id, Page);
+                result = await _tasksService.FetchProjectsTasksAsync(Id, Page);
                 tasks = result.Data;
             }
 
@@ -117,7 +117,7 @@ public partial class ProjectDetailsViewModel : BaseViewModel
     [RelayCommand]
     private async Task GoToTaskDetailsAsync(int taskId)
     {
-        Shell.Current.GoToAsync($"{nameof(TaskDetailsPage)}?ProjectId={Id}&TaskId={taskId}");
+        await Shell.Current.GoToAsync($"{nameof(TaskDetailsPage)}?ProjectId={Id}&TaskId={taskId}");
     }
 
     [RelayCommand]
