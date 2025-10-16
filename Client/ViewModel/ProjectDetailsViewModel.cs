@@ -1,6 +1,7 @@
 using Client.Model.Tasks;
 using Client.Services;
 using Client.View.Projects;
+using Client.View.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -104,6 +105,12 @@ public partial class ProjectDetailsViewModel : BaseViewModel
     private async Task GoToEditPage()
     {
         await Shell.Current.GoToAsync($"{nameof(EditProjectPage)}?Id={Id}");
+    }
+
+    [RelayCommand]
+    private async Task GoToCreateTask()
+    {
+        await Shell.Current.GoToAsync($"{nameof(CreateTaskPage)}?ProjectId={Id}");
     }
 
     [RelayCommand]

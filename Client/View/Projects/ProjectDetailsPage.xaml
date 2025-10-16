@@ -91,6 +91,7 @@
                 </CollectionView>
             </ScrollView>
             <Button Text="New Task"
+                    Command="{Binding GoToCreateTaskCommand}"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Margin="20,10,20,10"
                     Grid.Row="3" />
