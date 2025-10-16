@@ -73,6 +73,18 @@ public class AuthService
         return await HandleResponse(response);
     }
 
+    public async Task<MessageResponse> LogoutAsync()
+    {
+        var response = await _http.PostAsync("api/logout", null);
+
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var result = JsonSerializer.Deserialize<MessageResponse>(jsonResponse, _options);
+        if (result is null)
+            throw new Exception("Failed to log out");
+
+        return result;
+    }
+
     public async Task<MessageDataResponse<User>?> FetchUserAsync()
     {
         var response = await _http.GetAsync("/api/user");
