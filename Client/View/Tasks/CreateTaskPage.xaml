@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Client.ViewModel.Tasks"
+             x:DataType="viewmodel:CreateTaskViewModel"
+             x:Class="Client.View.Tasks.CreateTaskPage"
+             Title="{Binding PageTitle}"
+             BackgroundColor="{StaticResource BackgroundColor}">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid ColumnDefinitions="*"
+                  RowDefinitions="*">
+                <VerticalStackLayout Spacing="20"
+                                     Margin="20"
+                                     WidthRequest="250"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="Center">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Task Title:"
+                               Style="{StaticResource InputLabelStyle}">
+                        </Label>
+                        <Border Style="{StaticResource DefaultBorderStyle}">
+                            <Entry Placeholder="Title..."
+                                   Style="{StaticResource InputControlStyle}"
+                                   Text="{Binding Title}" />
+                        </Border>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Task Description:"
+                               Style="{StaticResource InputLabelStyle}">
+                        </Label>
+                        <Border Style="{StaticResource DefaultBorderStyle}">
+                            <Entry Placeholder="Title..."
+                                   Style="{StaticResource InputControlStyle}"
+                                   Text="{Binding Description}" />
+                        </Border>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Due Date"
+                               Style="{StaticResource InputLabelStyle}">
+                        </Label>
+                        <Border Style="{StaticResource DefaultBorderStyle}"
+                                IsVisible="{Binding DueDateEnabled}">
+                            <DatePicker Date="{Binding DueDate}"
+                                        MinimumDate="{Binding MinimumDate}"
+                                        Style="{StaticResource InputControlStyle}" />
+                        </Border>
+                        <Button Text="{Binding DueDateButtonText}"
+                                Command="{Binding ClearDateCommand}"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                FontSize="12" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Priority"
+                               Style="{StaticResource InputLabelStyle}">
+                        </Label>
+                        <Border Style="{StaticResource DefaultBorderStyle}">
+                            <Picker Title="Select Priority Level"
+                                    ItemsSource="{Binding PriorityLevelOptions}"
+                                    SelectedItem="{Binding Priority}"
+                                    BackgroundColor="{StaticResource CardBackgroundColor}"
+                                    TextColor="{StaticResource PrimaryTextColor}" />
+                        </Border>
+                    </VerticalStackLayout>
+                    <Label Text="{Binding ErrorMessage}"
+                           Style="{StaticResource ErrorLabelStyle}" />
+                    <Button Text="Create"
+                            Command="{Binding CreateTaskCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}" />
+                </VerticalStackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

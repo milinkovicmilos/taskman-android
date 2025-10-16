@@ -3,7 +3,9 @@ using Client.Services;
 using Client.State;
 using Client.View;
 using Client.View.Projects;
+using Client.View.Tasks;
 using Client.ViewModel;
+using Client.ViewModel.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using AppState = Client.State.AppState;
@@ -48,6 +50,7 @@ public static class MauiProgram
         builder.Services.AddTransient<CreateProjectViewModel>();
         builder.Services.AddTransient<EditProjectViewModel>();
         builder.Services.AddTransient<ProjectDetailsViewModel>();
+        builder.Services.AddTransient<CreateTaskViewModel>();
 
         builder.Services.AddSingleton<AppState>();
         builder.Services.AddSingleton<AppStateCommands>();
@@ -61,6 +64,7 @@ public static class MauiProgram
         builder.Services.AddTransient<CreateProjectPage>();
         builder.Services.AddTransient<EditProjectPage>();
         builder.Services.AddTransient<ProjectDetailsPage>();
+        builder.Services.AddTransient<CreateTaskPage>();
 
         return builder.Build();
     }

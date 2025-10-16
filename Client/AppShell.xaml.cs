@@ -1,6 +1,7 @@
 ﻿using Client.State;
 using Client.View;
 using Client.View.Projects;
+using Client.View.Tasks;
 using Client.ViewModel;
 using AppState = Client.State.AppState;
 
@@ -23,5 +24,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(CreateProjectPage), typeof(CreateProjectPage));
         Routing.RegisterRoute(nameof(ProjectDetailsPage), typeof(ProjectDetailsPage));
         Routing.RegisterRoute(nameof(EditProjectPage), typeof(EditProjectPage));
+
+        Routing.RegisterRoute(nameof(CreateTaskPage), typeof(CreateTaskPage));
     }
 }
