@@ -31,6 +31,7 @@ public partial class ProjectDetailsViewModel : BaseViewModel
     {
         _service = service;
         _tasksService = tasksService;
+        PageTitle = "Project Details";
     }
 
     private async Task LoadProject()

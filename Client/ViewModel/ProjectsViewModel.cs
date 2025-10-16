@@ -23,6 +23,7 @@ public partial class ProjectsViewModel : BaseViewModel
     public ProjectsViewModel(ProjectsService service)
     {
         _service = service;
+        PageTitle = "Projects";
     }
 
     [RelayCommand]

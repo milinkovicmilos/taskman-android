@@ -6,6 +6,7 @@
              xmlns:viewmodel="clr-namespace:Client.ViewModel"
              x:Class="Client.View.Projects.ProjectDetailsPage"
              x:DataType="viewmodel:ProjectDetailsViewModel"
+             Title="{Binding PageTitle}"
              BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Content>
         <Grid ColumnDefinitions="*"

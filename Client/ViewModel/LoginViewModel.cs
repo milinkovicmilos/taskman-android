@@ -19,6 +19,7 @@ public partial class LoginViewModel : BaseViewModel
     public LoginViewModel(AuthService authService)
     {
         _authService = authService;
+        PageTitle = "Login";
     }
 
     [RelayCommand]

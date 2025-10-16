@@ -21,7 +21,7 @@ public partial class RegisterViewModel : BaseViewModel
     public RegisterViewModel(AuthService authService)
     {
         _authService = authService;
-        Title = "Register";
+        PageTitle = "Register";
     }
 
     [RelayCommand]
