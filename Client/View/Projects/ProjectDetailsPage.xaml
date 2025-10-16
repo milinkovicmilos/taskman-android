@@ -60,26 +60,30 @@
                         <DataTemplate x:DataType="modeltasks:TaskSummary">
                             <Border Style="{StaticResource CardStyle}"
                                     Margin="0,0,0,20">
-                                <!--
-                                    <Border.GestureRecognizers>
-                                        <TapGestureRecognizer CommandParameter="{Binding Id}"
-                                                              Command="{
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding Id}"
+                                                          Command="{
                                                               Binding Source={RelativeSource AncestorType={
-                                                              x:Type viewmodel:ProjectsViewModel}}, 
-                                                              Path=GoToDetailsCommand}" />
-                                    </Border.GestureRecognizers>
-                                    -->
+                                                              x:Type viewmodel:ProjectDetailsViewModel}}, 
+                                                              Path=GoToTaskDetailsCommand}" />
+                                </Border.GestureRecognizers>
                                 <VerticalStackLayout Padding="10">
-                                    <HorizontalStackLayout>
-                                        <CheckBox IsChecked="{Binding Completed}"
-                                                  IsEnabled="False"
-                                                  Margin="0"
-                                                  Color="{StaticResource BorderColor}">
-                                        </CheckBox>
-                                        <Label Text="{Binding Title}"
-                                               VerticalOptions="Center"
-                                               Style="{StaticResource CardTitleStyle}" />
-                                    </HorizontalStackLayout>
+                                    <FlexLayout JustifyContent="SpaceBetween">
+                                        <HorizontalStackLayout>
+                                            <CheckBox IsChecked="{Binding Completed}"
+                                                      IsEnabled="False"
+                                                      Margin="0"
+                                                      Color="{StaticResource AccentColor}">
+                                            </CheckBox>
+                                            <Label Text="{Binding Title}"
+                                                   VerticalOptions="Center"
+                                                   Style="{StaticResource CardTitleStyle}" />
+                                        </HorizontalStackLayout>
+                                        <Ellipse WidthRequest="25"
+                                                 HeightRequest="25"
+                                                 BackgroundColor="{StaticResource DeleteColor}"
+                                                 Opacity="{Binding PriorityOpacity}" />
+                                    </FlexLayout>
                                     <Label Text="{Binding Description}"
                                            Style="{StaticResource CardDescriptionStyle}" />
                                     <Label Text="{Binding DateText}"

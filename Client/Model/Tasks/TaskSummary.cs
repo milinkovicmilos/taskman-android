@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Client.Enums;
 using Client.JsonConverters;
 
 namespace Client.Model.Tasks;
@@ -8,7 +9,7 @@ public class TaskSummary
     public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
-    public int? Priority { get; set; }
+    public PriorityLevelOptions? Priority { get; set; }
     [JsonPropertyName("due_date")] public DateTime? DueDate { get; set; }
 
     [JsonConverter(typeof(BooleanConverter))]
@@ -36,6 +37,16 @@ public class TaskSummary
             }
 
             return "";
+        }
+    }
+
+    public double PriorityOpacity
+    {
+        get
+        {
+            if (Priority.HasValue)
+                return (int)Priority / 10.0;
+            return 0;
         }
     }
 }

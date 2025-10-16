@@ -115,6 +115,12 @@ public partial class ProjectDetailsViewModel : BaseViewModel
     }
 
     [RelayCommand]
+    private async Task GoToTaskDetailsAsync(int taskId)
+    {
+        Shell.Current.GoToAsync($"{nameof(TaskDetailsPage)}?ProjectId={Id}&TaskId={taskId}");
+    }
+
+    [RelayCommand]
     private async Task DeleteProject()
     {
         IsBusy = true;
